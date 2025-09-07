@@ -1,22 +1,105 @@
-# algorand_exam
 
-Welcome to your new AlgoKit project!
+# 📘 ExamResult dApp on Algorand
 
-This is your workspace root. A `workspace` in AlgoKit is an orchestrated collection of standalone projects (backends, smart contracts, frontend apps and etc).
+## 🚀 Project Description  
+ExamResult is a decentralized application (dApp) built on the **Algorand blockchain**.  
+It is designed to securely store and manage student exam results, ensuring **transparency, immutability, and trust** in academic records.  
+<img width="1470" height="956" alt="Screenshot 2025-09-07 at 8 59 20 PM" src="https://github.com/user-attachments/assets/a0414c49-2771-4784-9a91-e7f4950c7616" />
+https://lora.algokit.io/testnet/application/745513709
 
-By default, `projects_root_path` parameter is set to `projects`. Which instructs AlgoKit CLI to create a new directory under `projects` directory when new project is instantiated via `algokit init` at the root of the workspace.
+This project was created as part of my learning journey into blockchain and Algorand smart contracts.  
 
-## Getting Started
+---
 
-To get started refer to `README.md` files in respective sub-projects in the `projects` directory.
+## 💡 What it Does  
+- Allows storing a student’s name and their exam score directly on the Algorand blockchain.  
+- Ensures that exam results are tamper-proof and can be verified by anyone.  
+- Acts as a foundation for more complex education-focused blockchain solutions like certificate issuance or student record management.  
 
-To learn more about algokit, visit [documentation](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md).
+---
 
-### GitHub Codespaces
+## ✨ Features  
+- 🔐 **Secure & Immutable** – Once results are saved, they cannot be altered.  
+- 🌍 **Decentralized** – Powered by Algorand, no central authority controls the data.  
+- 📊 **Simple Smart Contract** – Minimal and beginner-friendly example of Algorand contract writing.  
+- ⚡ **Lightweight & Fast** – Deployed on Algorand TestNet for quick and free experimentation.  
 
-To get started execute:
+---
 
-1. `algokit generate devcontainer` - invoking this command from the root of this repository will create a `devcontainer.json` file with all the configuration needed to run this project in a GitHub codespace. [Run the repository inside a codespace](https://docs.github.com/en/codespaces/getting-started/quickstart) to get started.
-2. `algokit init` - invoke this command inside a github codespace to launch an interactive wizard to guide you through the process of creating a new AlgoKit project
+## 🔗 Deployed Smart Contract  
+👉 [View Contract on Algorand TestNet](https://lora.algokit.io/testnet/application/745513709)  
 
-Powered by [Copier templates](https://copier.readthedocs.io/en/stable/).
+---
+
+## 🛠️ Smart Contract Code  
+Below is the core logic written in **Algorand TypeScript SDK**:  
+
+```typescript
+// paste your code
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
+
+export class ExamResult extends Contract {
+  student = GlobalState<string>({ key: "student", initialValue: "none" })
+  marks = GlobalState<uint64>({ key: "marks", initialValue: 0 })
+
+  setResult(name: string, score: uint64): string {
+    this.student.value = name
+    this.marks.value = score
+    return "Result saved for " + name
+  }
+}
+````
+
+---
+
+## 📂 Repository Structure
+
+```
+📦 ExamResult-dApp
+ ┣ 📜 README.md   # Project Documentation
+ ┣ 📜 XXX         # Placeholder for additional files
+ ┗ 📂 src         # Smart contract and dApp code
+```
+
+---
+
+## 👨‍💻 How to Use (For Beginners)
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/your-username/ExamResult-dApp.git
+   ```
+2. Navigate into the project:
+
+   ```bash
+   cd ExamResult-dApp
+   ```
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+4. Deploy or interact with the contract using Algorand’s developer tools (Algokit / Sandbox).
+
+---
+
+## 🎯 Future Scope
+
+* Extend functionality to store multiple exam results per student.
+* Add teacher authentication to validate result entries.
+* Build a front-end UI for easy interaction with the smart contract.
+
+---
+
+## 🏆 Credits
+
+Built with ❤️ using [Algorand Foundation TypeScript SDK](https://github.com/algorandfoundation/algorand-typescript).
+
+---
+
+```
+
+---
+
+```
