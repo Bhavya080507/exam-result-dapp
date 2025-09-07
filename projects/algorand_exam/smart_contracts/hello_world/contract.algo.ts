@@ -1,7 +1,12 @@
-import { Contract } from '@algorandfoundation/algorand-typescript'
+import { Contract, GlobalState, uint64 } from '@algorandfoundation/algorand-typescript'
 
-export class HelloWorld extends Contract {
-  hello(name: string): string {
-    return `Hello, ${name}`
+export class ExamResult extends Contract {
+  student = GlobalState<string>({ key: "student", initialValue: "none" })
+  marks = GlobalState<uint64>({ key: "marks", initialValue: 0 })
+
+  setResult(name: string, score: uint64): string {
+    this.student.value = name
+    this.marks.value = score
+    return "Result saved for " + name
   }
 }
